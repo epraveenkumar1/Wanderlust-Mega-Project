@@ -1,9 +1,9 @@
 @Library('Shared') _
 pipeline {
-    agent {label 'Node'}
+    agent any
     
     environment{
-        SONAR_HOME = tool "Sonar"
+        SONAR_HOME = tool "SonarQube"
     }
     
     parameters {
@@ -56,7 +56,7 @@ pipeline {
         stage("SonarQube: Code Analysis"){
             steps{
                 script{
-                    sonarqube_analysis("Sonar","wanderlust","wanderlust")
+                    sonarqube_analysis("SonarQube","wanderlust","wanderlust")
                 }
             }
         }
